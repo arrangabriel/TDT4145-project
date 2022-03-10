@@ -13,6 +13,7 @@
 **Batch**(<u>batchID</u>, price, year, processingMethod, farmID)
 
 - processingMethod is a foreign key of ProcessingMethod
+- farmID is a foreign key of ProcessingMethod
 - price in USD
 
 **ProcessingMethod**(<u>name</u>, description)
