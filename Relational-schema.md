@@ -30,7 +30,7 @@ There are no functional dependencies amongst the attributes of ProcessingMethods
 
 **Farm**(<u>farmID</u>, name, country, region, masl)
 
-Under the assumption that a region name can exist in multiple countries there are no funcitonal dependencies amongst the attributes of Farm, and it is therefore in BCNF. If country is functionally dependent on region there is a transitive dependency from farmID to country, and Farm is therefore only in 2NF.
+With the assumption that a region name can exist in multiple countries there are no funcitonal dependencies amongst the attributes of Farm, and it is therefore in BCNF. If country is functionally dependent on region there is a transitive dependency from farmID to country, and Farm is therefore only in 2NF.
 
 **BatchSpecies**(<u>batchID</u>, <u>beanSpecies</u>)
 
