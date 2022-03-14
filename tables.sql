@@ -7,16 +7,16 @@ CREATE TABLE User (
 
 CREATE TABLE Tasting (
     userEmail varchar(255) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES User(email),
-    roastID int NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES Roast(roastID),
+    roastery varchar(255) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES Roast(roastery),
+    roastName varchar(255) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES Roast(name),
     note text(65,535),
     points int,
     date date
 ); 
 
 CREATE TABLE Roast (
-    roastID int NOT NULL PRIMARY KEY,
-    roastery varchar(255),
-    degree varchar(255),
+    roastery varchar(255) NOT NULL PRIMARY KEY,
+    degree varchar(255) NOT NULL PRIMARY KEY,
     date date,
     name varchar(255),
     description text(65,535),
@@ -46,7 +46,8 @@ CREATE TABLE Farm (
     masl int
 ); 
 
-CREATE TABLE BatchSpecies (
+CREATE TABLE BatchBean (
     batchID int NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES Batch(batchID),
-    beanSpecies varchar(255) NOT NULL PRIMARY KEY
+    beanName varchar(255) NOT NULL PRIMARY KEY
+    beanSpecies varchar(255)
 );
