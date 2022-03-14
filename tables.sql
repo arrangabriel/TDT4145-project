@@ -34,7 +34,7 @@ CREATE TABLE Batch (
 ); 
 
 CREATE TABLE ProcessingMethod (
-    note text(65,535) NOT NULL PRIMARY KEY,
+    name varchar(255) NOT NULL PRIMARY KEY,
     description text(65,535)
 ); 
 
