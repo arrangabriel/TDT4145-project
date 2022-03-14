@@ -2,14 +2,14 @@
 
 There are no functional dependencies amongst the attributes of User, it is therefore in BCNF.
 
-**Tasting**(<u>userEmail</u>, <u>roastID</u>, note, points, date)
+**Tasting**(<u>userEmail</u>, <u>roastery</u>, <u>roastName</u>, note, points, date)
 
 - userEmail is a foreign key of User
-- roastID is a foreign key of Roast
+- roastery and roastName are foreign keys of Roast
 
 There are no functional dependencies amongst the attributes of Tasting, it is therefore in BCNF.
 
-**Roast**(<u>roastID</u>, roastery, degree, date, name, description, price, batchID)
+**Roast**(<u>roastery</u>, degree, date, <u>name</u>, description, price, batchID)
 
 - batchID is a foreign key of Batch
 - price in NOK
@@ -32,8 +32,8 @@ There are no functional dependencies amongst the attributes of ProcessingMethods
 
 With the assumption that a region name can exist in multiple countries there are no funcitonal dependencies amongst the attributes of Farm, and it is therefore in BCNF. If country is functionally dependent on region there is a transitive dependency from farmID to country, and Farm is therefore only in 2NF.
 
-**BatchSpecies**(<u>batchID</u>, <u>beanSpecies</u>)
+**BatchBean**(<u>batchID</u>,<u>beanName</u>, beanSpecies)
 
 - batchID is a foreign key of Batch
 
-There are no functional dependencies amongst the attributes of BatchSpecies, it is therefore in BCNF.
+There are no functional dependencies amongst the attributes of BatchBean, it is therefore in BCNF.
