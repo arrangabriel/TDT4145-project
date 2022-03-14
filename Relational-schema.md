@@ -1,3 +1,5 @@
+# Relational schema and normal form argumentation
+
 **User**(<u>email</u>, password, firstname, lastname)
 
 There are no functional dependencies amongst the attributes of User, it is therefore in BCNF.

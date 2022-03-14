@@ -31,7 +31,7 @@ CREATE TABLE Roast (
 ); 
 
 CREATE TABLE Batch (
-    batchID Integer PRIMARY KEY,
+    batchID int NOT NULL PRIMARY KEY,
     price int,
     year int,
     note text(65,535),
@@ -47,7 +47,7 @@ CREATE TABLE ProcessingMethod (
 ); 
 
 CREATE TABLE Farm (
-    farmID Integer PRIMARY KEY,
+    farmID int NOT NULL PRIMARY KEY,
     name varchar(255),
     country varchar(255),
     region varchar(255),
