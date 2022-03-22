@@ -26,7 +26,7 @@ CREATE TABLE Roast (
     description text(65,535),
     price int,
     batchID int,
-    PRIMARY KEY (roastery, degree),
+    PRIMARY KEY (roastery, name),
     FOREIGN KEY (batchID) REFERENCES Batch(batchID)
 ); 
 
