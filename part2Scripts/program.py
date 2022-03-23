@@ -68,14 +68,14 @@ def review() -> bool:
 def viewUsers() -> None:
     print("Users with tastings")
     print("===================")
-
+    time = str(datetime.now().year) + '-01-01'
     cursor.execute(
         """SELECT COUNT(*) AS noTastings, email, firstname, lastname
         FROM Tasting
         NATURAL JOIN User
-        WHERE date(Tasting.date) > date(?, "-1 year")
+        WHERE date(Tasting.date) > date(?)
         GROUP BY email
-        ORDER BY noTastings DESC""", [datetime.now().date()])
+        ORDER BY noTastings DESC""", [time])
 
     for user in cursor.fetchall():
         print(f"{user[2]} {user[3]}: {user[0]} tastings")

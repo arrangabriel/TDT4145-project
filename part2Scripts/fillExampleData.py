@@ -7,7 +7,7 @@ cursor.execute('''INSERT INTO User VALUES ('a', 'b', 'A', 'Mc. A')''')
 
 # Farms
 cursor.execute('''INSERT INTO Farm VALUES (1, "Nombre de Dios", "El Salvador", "Santa Ana", 1500)''')
-cursor.execute('''INSERT INTO Farm VALUES (2, "Galdhøpiggen", "Norway", "Jotunheimen", 2469)''')
+cursor.execute('''INSERT INTO Farm VALUES (2, "Galdhoepiggen", "Norway", "Jotunheimen", 2469)''')
 
 
 # Processing Methods
@@ -29,8 +29,8 @@ cursor.execute('''INSERT INTO Roast VALUES ("Walulu", "dark roast", '2022-02-20'
 
 #Tastings
 cursor.execute(
-    '''INSERT INTO Tasting VALUES ("a", "Walulu", "Oksana 2019", "Tasted of pure snowy heaven", 10, "2021-03-05")''')
-cursor.execute('''INSERT INTO Tasting VALUES ("a", "Trondheim brewery Jacobsen & Svart", "Vinterkaffe 2022", "Tasted of light heaven", 5, "2021-03-05")''')
+    '''INSERT INTO Tasting VALUES ("a", "Walulu", "Oksana 2019", "Tasted of pure snowy heaven", 10, "2019-03-05")''')
+cursor.execute('''INSERT INTO Tasting VALUES ("a", "Trondheim brewery Jacobsen & Svart", "Vinterkaffe 2022", "Tasted of light heaven", 5, "2022-03-05")''')
 cursor.execute(
     '''INSERT INTO Tasting VALUES ("ola@normann.no", "Walulu", "Oksana 2019", "Tasted of good floral", 8, "2022-03-05")''')
 
