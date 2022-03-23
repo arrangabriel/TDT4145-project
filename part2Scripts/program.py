@@ -1,9 +1,10 @@
 import sqlite3
 from datetime import datetime
 
-con = sqlite3.connect("test.db")
+con = sqlite3.connect("coffeeDB.db")
 cursor = con.cursor()
 currentUser = None
+
 
 def login():
     email = input("Email: ")
@@ -48,25 +49,29 @@ def review():
     cursor.execute("INSERT INTO Tasting(userEmail, roastery, roastName, note, points, date) VALUES (?,?,?,?,?,?)",[currentUser["email"], roastery, coffeeName, notes, points, datetime.now()])
     con.commit()
 
+def end():
+    con.close()
+    exit()
+
+choices = {
+    "v": view,
+    "r": review,
+    "e": end
+}
+
 def main():
     print("Welcome to CoffeeDB")
     while not login():
         print("Could not find user. Please try again")
     print(f"Welcome {currentUser['firstName']} {currentUser['lastName']}")
-    choices = {
-        "v": view,
-        "r": review,
-        "e": end
-    }
+    
     while True:
         choice = ""
         while not choice in choices.keys():
             choice = input("What do you want to do?\n[v]iew coffees | add [r]eview | [e]nd program: ")
         choices[choice]()
 
-def end():
-    con.close()
-    exit()
+
 
 main()
 end()
