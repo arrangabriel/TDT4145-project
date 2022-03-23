@@ -1,5 +1,5 @@
 import sqlite3
-con = sqlite3.connect("test.db")
+con = sqlite3.connect("coffeeDB.db")
 cursor = con.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS User (
     email varchar(255) NOT NULL PRIMARY KEY,
