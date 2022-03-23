@@ -86,7 +86,7 @@ def filter():
         'Which countries would you like to see coffees from?\nProvide a comma separated list: ')
     cursor.execute("""SELECT name
     FROM ProcessingMethod""")
-    c = tuple(countries.split(', '))
+    c = countries.split(', ')
     methods = cursor.fetchall()
 
     print("All processing methods: ")
@@ -94,24 +94,25 @@ def filter():
     for i, method in enumerate(methods, start=1):
         print(str(i), ":", method[0])
         dictMethod[i] = method[0]
+    dictMethod[0] = ''
     try:
         excludedProcessingMethod = int(input(
             'Which processing method do you want excluded (enter to include all): '))
-        print('noe: ', c)
-        cursor.execute(
-            """SELECT Roast.roastery, Roast.name
-            FROM (SELECT c, p, b FROM 
-            (SELECT Farm.country as c, Batch.processingMethod as p, Batch.batchID as b
-            From Farm, Batch 
-            WHERE Batch.farmID = Farm.farmID)
-            WHERE and p != ?)
-            , Roast
-            WHERE Roast.batchID = b"""
-        , [dictMethod[excludedProcessingMethod]])
-        for n in cursor.fetchall():
-            print(n)
     except:
-        pass
+        excludedProcessingMethod = 0
+    cursor.execute(
+        """SELECT Roast.roastery, Roast.name
+        FROM (SELECT c, p, b FROM 
+        (SELECT Farm.country as c, Batch.processingMethod as p, Batch.batchID as b
+        FROM Farm, Batch 
+        WHERE Batch.farmID = Farm.farmID)
+        WHERE p != ? AND c IN ?)
+        , Roast
+        WHERE Roast.batchID = b""", [dictMethod[excludedProcessingMethod], c])
+    print("=====================")
+    for coffee in cursor.fetchall():
+        print(f"Roast: {coffee[1]}\nRoastery: {coffee[0]}")
+        print("---------------")
 
 def descibed():
     describedAs = input("A roast is described as: ")
