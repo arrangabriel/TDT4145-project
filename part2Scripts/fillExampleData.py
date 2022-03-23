@@ -3,7 +3,7 @@ con = sqlite3.connect("coffeeDB.db")
 cursor = con.cursor()
 # Users
 cursor.execute('''INSERT INTO User VALUES ('ola@normann.no', 'besteOla123', 'Ola', 'Normann')''')
-cursor.execute('''INSERT INTO User VALUES ('a', 'b', 'A', 'Mc. A')''')
+cursor.execute('''INSERT INTO User VALUES ('per@gmail.com', 'perVilHaMer', 'Per', 'Kilo')''')
 
 # Farms
 cursor.execute('''INSERT INTO Farm VALUES (1, "Nombre de Dios", "El Salvador", "Santa Ana", 1500)''')
@@ -30,7 +30,7 @@ cursor.execute('''INSERT INTO Roast VALUES ("Walulu", "dark roast", '2022-02-20'
 #Tastings
 cursor.execute(
     '''INSERT INTO Tasting VALUES ("a", "Walulu", "Oksana 2019", "Tasted of pure snowy heaven", 10, "2019-03-05")''')
-cursor.execute('''INSERT INTO Tasting VALUES ("a", "Trondheim brewery Jacobsen & Svart", "Vinterkaffe 2022", "Tasted of light heaven", 5, "2022-03-05")''')
+cursor.execute('''INSERT INTO Tasting VALUES ("per@gmail.com", "Trondheim brewery Jacobsen & Svart", "Vinterkaffe 2022", "Tasted of light heaven", 5, "2022-03-05")''')
 cursor.execute(
     '''INSERT INTO Tasting VALUES ("ola@normann.no", "Walulu", "Oksana 2019", "Tasted of good floral", 8, "2022-03-05")''')
 

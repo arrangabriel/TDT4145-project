@@ -31,7 +31,7 @@ def login() -> bool:
     return True
 
 
-def review() -> bool:
+def tasting() -> bool:
     # roastery, coffee name, points and notes
     roastery = input("Roastery: ")
     coffeeName = input("Coffee Name: ")
@@ -78,7 +78,7 @@ def viewUsers() -> None:
         ORDER BY noTastings DESC""", [time])
 
     for user in cursor.fetchall():
-        print(f"{user[2]} {user[3]}: {user[0]} tastings")
+        print(f"{user[2]} {user[3]}: {user[0]} tasting{'' if user[0] == 1 else 's'}")
 
 
 def filter():
@@ -154,7 +154,7 @@ def end():
 
 
 choices = {
-    "r": review,
+    "t": tasting,
     "u": viewUsers,
     "e": end,
     "v": values,
@@ -173,9 +173,8 @@ def main():
         choice = ""
         while not choice in choices.keys():
             choice = input(
-                "What do you want to do?\nsee most [v]alued coffees | add [r]eview | view [u]sers | search [d]escription | [f]ilter coffees on location and method | [e]nd program: ")
+                "What do you want to do?\nsee most [v]alued coffees | add [t]asting | view [u]sers | search [d]escription | [f]ilter coffees on location and method | [e]nd program: ")
         choices[choice]()
 
 
 main()
-end()
