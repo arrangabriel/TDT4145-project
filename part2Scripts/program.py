@@ -84,9 +84,10 @@ def viewUsers() -> None:
 def filter():
     countries = input(
         'Which countries would you like to see coffees from?\nProvide a comma separated list: ')
+    c = [country.strip() for country in countries.split(',')]
+
     cursor.execute("""SELECT name
     FROM ProcessingMethod""")
-    c = countries.split(', ')
     methods = cursor.fetchall()
 
     print("All processing methods: ")
@@ -101,14 +102,14 @@ def filter():
     except:
         excludedProcessingMethod = 0
     cursor.execute(
-        """SELECT Roast.roastery, Roast.name
+        f"""SELECT Roast.roastery, Roast.name
         FROM (SELECT c, p, b FROM 
         (SELECT Farm.country as c, Batch.processingMethod as p, Batch.batchID as b
         FROM Farm, Batch 
         WHERE Batch.farmID = Farm.farmID)
-        WHERE p != ? AND c IN ?)
+        WHERE p != ? AND c IN ({"?,"*(len(c)-1)}?))
         , Roast
-        WHERE Roast.batchID = b""", [dictMethod[excludedProcessingMethod], c])
+        WHERE Roast.batchID = b""", [dictMethod[excludedProcessingMethod], *c])
     print("=====================")
     for coffee in cursor.fetchall():
         print(f"Roast: {coffee[1]}\nRoastery: {coffee[0]}")
