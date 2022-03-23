@@ -6,11 +6,11 @@ CREATE TABLE User (
 ); 
 
 CREATE TABLE Tasting (
-    userEmail varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
     roastery varchar(255) NOT NULL,
     roastName varchar(255) NOT NULL,
     note text(65,535),
-    points int,
+    points int CHECK(points BETWEEN 1 and 10),
     date date,
     PRIMARY KEY (userEmail, roastery, roastName),
     FOREIGN KEY (userEmail) REFERENCES User(email),
@@ -20,7 +20,7 @@ CREATE TABLE Tasting (
 
 CREATE TABLE Roast (
     roastery varchar(255) NOT NULL,
-    degree varchar(255) NOT NULL,
+    degree varchar(255) NOT NULL CHECK(degree IN ('light roast', 'medium roast', 'dark roast')),
     date date,
     name varchar(255),
     description text(65,535),

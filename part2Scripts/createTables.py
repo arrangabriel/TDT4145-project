@@ -10,21 +10,21 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS User (
 
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS Tasting (
-    userEmail varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
     roastery varchar(255) NOT NULL,
     roastName varchar(255) NOT NULL,
     note text(65,535),
-    points int,
+    points int CHECK(points BETWEEN 1 AND 10),
     date date,
-    PRIMARY KEY (userEmail, roastery, roastName),
-    FOREIGN KEY (userEmail) REFERENCES User(email),
+    PRIMARY KEY (email, roastery, roastName),
+    FOREIGN KEY (email) REFERENCES User(email),
     FOREIGN KEY (roastery) REFERENCES Roast(email),
     FOREIGN KEY (roastName) REFERENCES Roast(name)
 ); ''')
 
 cursor.execute('''CREATE TABLE Roast (
     roastery varchar(255) NOT NULL,
-    degree varchar(255) NOT NULL,
+    degree varchar(255) NOT NULL CHECK(degree IN ('light roast', 'medium roast', 'dark roast')),
     date date,
     name varchar(255),
     description text(65,535),
