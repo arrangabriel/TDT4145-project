@@ -1,4 +1,3 @@
 .DS_store
 .vscode
-
-/part2scripts/*.db
+*.db

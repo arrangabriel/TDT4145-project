@@ -24,13 +24,15 @@ cursor.execute('''INSERT INTO Batch VALUES (2, 3, 2019, "Good Batch", "washed", 
 cursor.execute('''INSERT INTO BatchBean VALUES (1, "Bourbon", "coffea arabica")''')
 
 # Roasts
-cursor.execute('''INSERT INTO Roast VALUES ("Trondheim brewery Jacobsen & Svart", "light roast", '2022-01-20 00:00:00', "Vinterkaffe 2022", "A tasty and complex coffee for polar nights", 600, 1)''')
-cursor.execute('''INSERT INTO Roast VALUES ("Walulu", "dark roast", '2022-02-20 00:00:00', "Oksana 2019", "your run of the mill rwandan dark roast", 200, 2)''')
+cursor.execute('''INSERT INTO Roast VALUES ("Trondheim brewery Jacobsen & Svart", "light roast", '2022-01-20', "Vinterkaffe 2022", "A tasty and complex coffee for polar nights", 600, 1)''')
+cursor.execute('''INSERT INTO Roast VALUES ("Walulu", "dark roast", '2022-02-20', "Oksana 2019", "your run of the mill rwandan dark roast", 200, 2)''')
 
 #Tastings
-cursor.execute('''INSERT INTO Tasting VALUES ("a", "Walulu", "Oksana 2019", "Tasted of pure snowy heaven", 10, "2022-03-5 00:00:21")''')
-cursor.execute('''INSERT INTO Tasting VALUES ("a", "Trondheim brewery Jacobsen & Svart", "Vinterkaffe 2022", "Tasted of light heaven", 5, "2022-03-5 00:00:22")''')
-cursor.execute('''INSERT INTO Tasting VALUES ("ola@normann.no", "Walulu", "Oksana 2019", "Tasted of good floral", 8, "2022-03-5 00:00:25")''')
+cursor.execute(
+    '''INSERT INTO Tasting VALUES ("a", "Walulu", "Oksana 2019", "Tasted of pure snowy heaven", 10, "2021-03-05")''')
+cursor.execute('''INSERT INTO Tasting VALUES ("a", "Trondheim brewery Jacobsen & Svart", "Vinterkaffe 2022", "Tasted of light heaven", 5, "2021-03-05")''')
+cursor.execute(
+    '''INSERT INTO Tasting VALUES ("ola@normann.no", "Walulu", "Oksana 2019", "Tasted of good floral", 8, "2022-03-05")''')
 
 
 
