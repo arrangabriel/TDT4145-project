@@ -1,5 +1,5 @@
 import sqlite3
-con = sqlite3.connect("test.db")
+con = sqlite3.connect("coffeeDB.db")
 cursor = con.cursor()
 cursor.execute('''INSERT INTO User VALUES ('ola@normann.no', 'besteOla123', 'Ola', 'Normann')''')
 cursor.execute('''INSERT INTO Farm VALUES (1, "Nombre de Dios", "El Salvador", "Santa Ana", 1500)''')
