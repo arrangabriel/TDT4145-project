@@ -17,7 +17,7 @@ cursor.execute('''INSERT INTO ProcessingMethod VALUES ("snowdried", "The coffe h
 
 # Batches
 cursor.execute('''INSERT INTO Batch VALUES (1, 8, 2021, "Fair Trade coffee from the beautiful Nombre de Dios", "washed", 1)''')
-cursor.execute('''INSERT INTO Batch VALUES (2, 3, 2019, "Good Batch", "washed", 2)''')
+cursor.execute('''INSERT INTO Batch VALUES (2, 3, 2019, "Good Batch", "snowdried", 2)''')
 
 
 # Batch Beans
