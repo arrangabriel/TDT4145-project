@@ -3,7 +3,7 @@
 ## Usage
 The program is located in `program.py`. The program assumes `coffeDB.db` exists with the correct tables. 
 
-If `coffeDB.db` is corrupted or missing, it can be generated with `createTables.py`. Additionally, the program `fillExampleData.py` can be run to fill the database with example data (Some of which is required for the user stories). Alternatively the script `reset.sh`  can be run to delete, create and populate the database all at once.
+If `coffeDB.db` is corrupted or missing, it can be generated with `createTables.py`. Additionally, the program `fillExampleData.py` can be run to fill the database with example data (Some of which is required for the user stories).
 
 When running `program.py`, you will be presented with a login screen:
 
@@ -25,7 +25,8 @@ After logging in successfully you will be presented with the following text:
 ```
 Welcome Ola Normann
 What do you want to do?
-see most [v]alued coffees | add [t]asting | view [u]sers | search [d]escription | [f]ilter coffees on location and method | [e]nd program:
+see most [v]alued coffees | add [t]asting | 
+view [u]sers | search [d]escription | [f]ilter coffees on location and method | [e]nd program:
 ```
 
 You will now be logged in as Ola Normann. To select an option, enter the character marked in brackets and press enter
@@ -103,3 +104,34 @@ Roastery: Walulu
 ```
 
 ### 5 Filter based on countries and processing methods
+To filter, enter `f` in the main menu. You will get the following prompt:
+
+```
+Which countries would you like to see coffees from?
+Provide a comma separated list:
+```
+
+Here you can enter a list of countries, like this:
+
+```
+Which countries would you like to see coffees from?
+Provide a comma separated list: Rwanda, Colombia
+```
+
+After this, you will get a list of all the available processing methods, and can choose one to exclude (or leave blank to include all). Enter `1` to exclude washed coffees:
+
+```
+All processing methods: 
+1 : washed
+2 : snowdried
+Which processing method do you want excluded (enter to include all): 1
+```
+
+If you have loaded the example data, you will get the following result:
+
+```
+=====================
+Roast: Hola Amigo
+Roastery: Compadre
+---------------
+```
