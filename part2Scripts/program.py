@@ -31,7 +31,7 @@ def login() -> bool:
     return True
 
 
-def review() -> bool:
+def tasting() -> bool:
     # roastery, coffee name, points and notes
     roastery = input("Roastery: ")
     coffeeName = input("Coffee Name: ")
@@ -68,34 +68,52 @@ def review() -> bool:
 def viewUsers() -> None:
     print("Users with tastings")
     print("===================")
-
+    time = str(datetime.now().year) + '-01-01'
     cursor.execute(
         """SELECT COUNT(*) AS noTastings, email, firstname, lastname
         FROM Tasting
         NATURAL JOIN User
-        WHERE date(Tasting.date) > date(?, "-1 year")
+        WHERE date(Tasting.date) > date(?)
         GROUP BY email
-        ORDER BY noTastings DESC""", [datetime.now().date()])
+        ORDER BY noTastings DESC""", [time])
 
     for user in cursor.fetchall():
-        print(f"{user[2]} {user[3]}: {user[0]} tastings")
+        print(f"{user[2]} {user[3]}: {user[0]} tasting{'' if user[0] == 1 else 's'}")
 
 
 def filter():
     countries = input(
         'Which countries would you like to see coffees from?\nProvide a comma separated list: ')
+    c = [country.strip() for country in countries.split(',')]
+
     cursor.execute("""SELECT name
     FROM ProcessingMethod""")
-
     methods = cursor.fetchall()
 
     print("All processing methods: ")
-    for i, method in enumerate(methods):
-        print(i + 1 + ": " + method)
-
-    excludedProcessingMethod = input(
-        'Which processing method do you want excluded (enter to include all): ')
-
+    dictMethod = {}
+    for i, method in enumerate(methods, start=1):
+        print(str(i), ":", method[0])
+        dictMethod[i] = method[0]
+    dictMethod[0] = ''
+    try:
+        excludedProcessingMethod = int(input(
+            'Which processing method do you want excluded (enter to include all): '))
+    except:
+        excludedProcessingMethod = 0
+    cursor.execute(
+        f"""SELECT Roast.roastery, Roast.name
+        FROM (SELECT c, p, b FROM 
+        (SELECT Farm.country as c, Batch.processingMethod as p, Batch.batchID as b
+        FROM Farm, Batch 
+        WHERE Batch.farmID = Farm.farmID)
+        WHERE p != ? AND c IN ({"?,"*(len(c)-1)}?))
+        , Roast
+        WHERE Roast.batchID = b""", [dictMethod[excludedProcessingMethod], *c])
+    print("=====================")
+    for coffee in cursor.fetchall():
+        print(f"Roast: {coffee[1]}\nRoastery: {coffee[0]}")
+        print("---------------")
 
 
 
@@ -138,7 +156,7 @@ def end():
 
 
 choices = {
-    "r": review,
+    "t": tasting,
     "u": viewUsers,
     "e": end,
     "v": values,
@@ -157,9 +175,8 @@ def main():
         choice = ""
         while not choice in choices.keys():
             choice = input(
-                "What do you want to do?\nsee most [v]alued coffees | add [r]eview | view [u]sers | search [d]escription | [f]ilter coffees on location and method | [e]nd program: ")
+                "What do you want to do?\nsee most [v]alued coffees | add [t]asting | view [u]sers | search [d]escription | [f]ilter coffees on location and method | [e]nd program: ")
         choices[choice]()
 
 
 main()
-end()
