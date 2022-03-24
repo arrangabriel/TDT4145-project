@@ -33,7 +33,7 @@ You will now be logged in as Ola Normann. To select an option, enter the charact
 ## User stories
 
 ### 1 Adding a tasting
-To add a tasting, start by entering `t` on the main menu. There you will get presented with some input fields. If you have loaded the example data provided you can enter the following for the tasting
+To add a tasting, start by entering `t` on the main menu. There you will get presented with some input fields. If you have loaded the example data provided you can enter the following for the tasting:
 
 ```
 Roastery: Trondheim brewery Jacobsen & Svart
@@ -87,12 +87,12 @@ To search the user and roastery descriptions of the coffees for a special phrase
 A roast is described as:
 ```
 
-Here you can for example enter
+Here you can for example enter:
 ```
 A roast is described as: floral
 ```
 
-To get the following result (if you have loaded the example data)
+To get the following result (if you have loaded the example data):
 
 ```
 Coffees described as floral
