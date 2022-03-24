@@ -101,6 +101,8 @@ def filter():
             'Which processing method do you want excluded (enter to include all): '))
     except:
         excludedProcessingMethod = 0
+    # Please note that no user input is injected into the SQL query using the format string.
+    # It is simply used to vary the amount of injection points, '?-marks', for cursor.execute.
     cursor.execute(
         f"""SELECT Roast.roastery, Roast.name
         FROM (SELECT c, p, b FROM 
