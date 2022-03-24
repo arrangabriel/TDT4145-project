@@ -3,7 +3,7 @@
 ## Usage
 The program is located in `program.py`. The program assumes `coffeDB.db` exists with the correct tables. 
 
-If `coffeDB.db` is corrupted or missing, it can be generated with `createTables.py`. Additionally, the program `fillExampleData.py` can be run to fill the database with example data (Some of which is required for the user stories).
+If `coffeDB.db` is corrupted or missing, it can be generated with `createTables.py`. Additionally, the program `fillExampleData.py` can be run to fill the database with example data (Some of which is required for the user stories). Alternatively the script reset.sh can be run to delete, create and populate the database all at once.
 
 When running `program.py`, you will be presented with a login screen:
 
